@@ -1,0 +1,5 @@
+echo "Priority Log: Starting MySQL container"
+SpinUpContainers/getMySQLContainer
+
+echo "Priority Log: Starting PHP enabled Apache container"
+SpinUpContainers/getPHPApacheContainer

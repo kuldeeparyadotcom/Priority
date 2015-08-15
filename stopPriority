@@ -1,0 +1,2 @@
+sudo docker rm -f Priority_web
+sudo docker rm -f Priority_mysql
