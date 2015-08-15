@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="priority_jquery_functions.js"></script>
   </head>
 
   <body>
@@ -20,7 +21,8 @@
       <button type="button" class="btn-link"><label for="manage_survey">Add Tasks!</label></button>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
+      <button type="button" id="task1" name="task1" class="btn btn-block btn-default">Do Something. <input type="checkbox" class="text-left" value="" /> </button>
     </div>
  
     <div class="container-fluid">
