@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="priority_jquery_functions.js"></script>
+    <script src="priority_jquery_ajax.js"></script>
   </head>
 
   <body>
@@ -36,7 +37,7 @@
                 die("Connection failed: ". $conn->connect_error);
         }
 
-        $sql = "SELECT id, task, priority, completed from priority_task";
+        $sql = "SELECT id, task, priority, completed from priority_task where completed=0";
         $result=$conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -44,32 +45,37 @@
                 while ($row = $result->fetch_assoc()) {
 
 		if ($row["priority"] == 1) {
+		$nextpriority=$row["priority"]+1;
     		echo '<div class="container">
-      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-danger"> '.$row["task"].' <input type="checkbox" id="checkbox" class="text-left" value="" /> </button>
+      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-danger" onclick="updatepriority('.$nextpriority.','.$row["id"].')"> '.$row["task"].' <input type="checkbox" id="checkbox" onclick="updatecompleted(1,'.$row["id"].')" class="text-left" value="" /> </button>
     		</div>' ;
 		}
 
 		if ($row["priority"] == 2) {
+		$nextpriority=$row["priority"]+1;
     		echo '<div class="container">
-      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-warning"> '.$row["task"].' <input type="checkbox" id="checkbox" class="text-left" value="" /> </button>
+      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-warning" onclick="updatepriority('.$nextpriority.','.$row["id"].')"> '.$row["task"].' <input type="checkbox" id="checkbox" onclick="updatecompleted(1,'.$row["id"].')" class="text-left" value="" /> </button>
     		</div>' ;
 		}
 
 		if ($row["priority"] == 3) {
+		$nextpriority=$row["priority"]+1;
     		echo '<div class="container">
-      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-primary"> '.$row["task"].' <input type="checkbox" id="checkbox" class="text-left" value="" /> </button>
+      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-primary" onclick="updatepriority('.$nextpriority.','.$row["id"].')"> '.$row["task"].' <input type="checkbox" id="checkbox" onclick="updatecompleted(1,'.$row["id"].')" class="text-left" value="" /> </button>
     		</div>' ;
 		}
 
 		if ($row["priority"] == 4) {
+		$nextpriority=$row["priority"]+1;
     		echo '<div class="container">
-      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-success"> '.$row["task"].' <input type="checkbox" id="checkbox" class="text-left" value="" /> </button>
+      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-success" onclick="updatepriority('.$nextpriority.','.$row["id"].')"> '.$row["task"].' <input type="checkbox" id="checkbox" onclick="updatecompleted(1,'.$row["id"].')" class="text-left" value="" /> </button>
     		</div>' ;
 		}
 
 		if ($row["priority"] == 5) {
+		$nextpriority=1;
     		echo '<div class="container">
-      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-default"> '.$row["task"].' <input type="checkbox" id="checkbox" class="text-left" value="" /> </button>
+      			<button type="button" id='.$row["id"].' name='.$row["id"].' class="btn btn-block btn-default" onclick="updatepriority('.$nextpriority.','.$row["id"].')"> '.$row["task"].' <input type="checkbox" id="checkbox" onclick="updatecompleted(1,'.$row["id"].')" class="text-left" value="" /> </button>
     		</div>' ;
 		}
 
