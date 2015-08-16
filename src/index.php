@@ -19,7 +19,7 @@
     </div>
     
     <div class="container-fluid text-right">
-      <button type="button" class="btn-link"><label for="manage_survey">Add Tasks!</label></button>
+      <a href="add.php" class="btn btn-link" role="button">Add Tasks!</a >
     </div>
 
 
@@ -89,7 +89,12 @@
     <!-- <div class="container">
       <button type="button" id="task1" name="task1" class="btn btn-block btn-default">Do Something. <input type="checkbox" class="text-left" value="" /> </button>
     </div> -->
- 
+
+
+    <br> 
+    <br> 
+    <br> 
+    <br> 
     <div class="container-fluid">
       <blockquote class="blockquote-reverse">
         <p class="bg-success">

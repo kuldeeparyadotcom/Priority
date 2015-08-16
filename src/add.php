@@ -7,6 +7,44 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="priority_jquery_functions.js"></script>
+    <script src="priority_jquery_ajax.js"></script>
+
+    <script>
+	 $(document).ready(function() {
+         	$("#addtask").click(function() {
+		var task = $("#task").val();
+                addtask(task);
+          });
+      	});
+
+function addtask(task) {
+    if (task == "") {
+        //document.getElementById("txtHint").innerHTML = "";
+        alert("Empty Task");
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
+                document.getElementById("task").contentWindow.location.reload();
+                //window.location.reload();
+            }
+        }
+        xmlhttp.open("GET","addtask.php?task="+task,true);
+        xmlhttp.send();
+    }
+}
+
+    </script>
+
   </head>
 
   <body>
@@ -17,12 +55,25 @@
     </div>
     
     <div class="container-fluid text-right">
-      <button type="button" class="btn-link"><label for="manage_survey">Back to Welcome Screen!</label></button>
+       <a href="index.php" class="btn btn-link" role="button">Show my tasks!!</a >
     </div>
 
-    <div class="container-fluid">
-    </div>
- 
+	<div class="container">
+		<form class="form" role="form">
+		<div class="form-group">
+			<input type="text" class="form-control" name="task" id="task" value="Enter Task Details.." onfocus="if(this.value == 'Enter Task Details..') {this.value=''}">
+			<br>
+			<button class="btn btn-success" name="addtask" id="addtask">ADD</button>
+		</div>
+		</form>
+	</div>
+   
+
+    <br>
+    <br>
+    <br>
+    <br>
+    
     <div class="container-fluid">
       <blockquote class="blockquote-reverse">
         <p class="bg-success">

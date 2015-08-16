@@ -49,3 +49,32 @@ function updatecompleted(c,i) {
         xmlhttp.send();
     }
 }
+
+
+/*
+//Add Task Ajax Call
+function addtask(task) {
+    if (task == "") {
+        //document.getElementById("txtHint").innerHTML = "";
+        alert("Empty Task");
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
+                //document.getElementById(i).contentWindow.location.reload();
+                window.location.reload();
+            }
+        }
+        xmlhttp.open("GET","addtask.php?task="+task,true);
+        xmlhttp.send();
+    }
+}
+*/
