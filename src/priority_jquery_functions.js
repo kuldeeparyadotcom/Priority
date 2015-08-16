@@ -6,6 +6,13 @@
 
 */
 
+ $(document).ready(function() {
+        $("input:checkbox").click(function() {
+            $(this).parent().hide();
+          });
+      });
+
+
 var MAX = 5; //Assumption: It is assumed that only 5 categorizations are entertained.
 var button_class = "btn-default";
 var previous_class = "";
@@ -46,6 +53,29 @@ var priority = 4; //Value should come from database
             $(this).addClass(button_class);
             previous_class = button_class;
            //Updated Priority value should be written back to database
-            
           });
       });
+
+/* 
+$(document).ready(function updatePriority(p,i) {
+        alert("Call received!");
+        if(window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+        } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        //do something
+                }
+        }
+
+        xmlhttp.open("GET", "updatePriority.php?p="+p+"&i="+i,true");
+        xmlhttp.send();
+
+});
+
+*/

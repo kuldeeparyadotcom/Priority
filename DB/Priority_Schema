@@ -1,0 +1,15 @@
+create database priority;
+
+CREATE TABLE priority_task (
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	task VARCHAR(200) NOT NULL,
+	priority INT(1) NOT NULL,
+	completed boolean NOT NULL default 0
+);
+
+
+INSERT INTO priority_task (task, priority) VALUES ('Do this', 2);
+INSERT INTO priority_task (task, priority) VALUES ('Do this too', 3);
+INSERT INTO priority_task (task, priority) VALUES ('Do this as well', 4);
+
+select * from priority_task where completed = 0;
