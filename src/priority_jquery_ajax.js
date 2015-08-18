@@ -10,7 +10,7 @@ $(document).ready(function(){
 	    //Just refresh the addtask div
             $("#addtaskdiv").load(location.href + " #addtaskdiv");
           	
-		/* Enable only for troubleshooting  
+		/* //Enable only for troubleshooting  
 		//There is one observation. On few calls of this jQuery, the below alert does not pop up (No idea what's goin)
 		alert("Data: " + data + "\nStatus: " + status);
 		*/

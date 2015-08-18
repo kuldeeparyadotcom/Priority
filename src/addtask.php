@@ -3,11 +3,20 @@
 	//$t = $_GET['task'];
 
 	//Providing credentials like this is not a good practice at all
-        $servername="mysql";
+	//Using docker defined Environment Variables
+        $servername=getenv('MYSQL_PORT_3306_TCP_ADDR');
+        $username="root";
+	$password=getenv('MYSQL_ENV_MYSQL_ROOT_PASSWORD');
+	$dbname="priority";
+
+	/*
+	//Providing credentials like this is not a good practice at all
+	$servername="mysql";
         $username="root";
         $password="password";
         $dbname="priority";
-
+	*/
+	
         //Create Connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
