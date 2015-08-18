@@ -9,42 +9,6 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="priority_jquery_functions.js"></script>
     <script src="priority_jquery_ajax.js"></script>
-
-    <script>
-	 $(document).ready(function() {
-         	$("#addtask").click(function() {
-		var task = $("#task").val();
-                addtask(task);
-          });
-      	});
-
-function addtask(task) {
-    if (task == "") {
-        //document.getElementById("txtHint").innerHTML = "";
-        alert("Empty Task");
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
-                document.getElementById("task").contentWindow.location.reload();
-                //window.location.reload();
-            }
-        }
-        xmlhttp.open("GET","addtask.php?task="+task,true);
-        xmlhttp.send();
-    }
-}
-
-    </script>
-
   </head>
 
   <body>
@@ -58,7 +22,7 @@ function addtask(task) {
        <a href="index.php" class="btn btn-link" role="button">Show my tasks!!</a >
     </div>
 
-	<div class="container">
+	<div id="addtaskdiv" class="container">
 		<form class="form" role="form">
 		<div class="form-group">
 			<input type="text" class="form-control" name="task" id="task" value="Enter Task Details.." onfocus="if(this.value == 'Enter Task Details..') {this.value=''}">

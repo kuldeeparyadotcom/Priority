@@ -1,7 +1,8 @@
 <?php
-	$t = $_GET['task'];
-	//$i = intval($_GET['i']);
+	$t = $_POST['task'];
+	//$t = $_GET['task'];
 
+	//Providing credentials like this is not a good practice at all
         $servername="mysql";
         $username="root";
         $password="password";
@@ -15,16 +16,16 @@
                 die("Connection failed: ". $conn->connect_error);
         }
 
-	$sql = "INSERT INTO priority_task (task)
-		VALUES ('".$t."')";
-	echo $sql;
-	
-	if ($conn->query($sql) === TRUE) {
-    		echo "Record updated successfully";
-	} else {
-    		echo "Error updating record: " . $conn->error;
-	}
+	//For better performance, let's use prepared statements
+	$stmt = $conn->prepare("INSERT INTO priority_task (task) VALUES (?)");
 
+	//bind parameters
+	$stmt->bind_param("s",$t);
+	
+	//Execute execute
+	$stmt->execute();
+	
+	//Close the connection
  	$conn->close();
 
 ?>

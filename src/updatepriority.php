@@ -1,7 +1,8 @@
 <?php
-	$p = intval($_GET['p']);
-	$i = intval($_GET['i']);
-
+	$p = intval($_POST['p']);
+	$i = intval($_POST['i']);
+	echo "priority: ".$p ;
+	echo "id: ".$i ;
 
 
         $servername="mysql";

@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <div class="page-header">  
         <p><h1>First Things First!</h1></p>
       </div>
@@ -22,7 +22,7 @@
       <a href="add.php" class="btn btn-link" role="button">Add Tasks!</a >
     </div>
 
-
+<div id="tasklist">
 <?php
         $servername="mysql";
         $username="root";
@@ -85,7 +85,7 @@
         //Close Connection
         $conn->close();
 ?>
-
+</div>
     <!-- <div class="container">
       <button type="button" id="task1" name="task1" class="btn btn-block btn-default">Do Something. <input type="checkbox" class="text-left" value="" /> </button>
     </div> -->

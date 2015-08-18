@@ -1,7 +1,8 @@
 <?php
-	$c = intval($_GET['c']);
-	$i = intval($_GET['i']);
-
+	$c = intval($_POST['c']);
+	$i = intval($_POST['i']);
+	echo "completion: ".$c;
+	echo "id ".$i;
 
 
         $servername="mysql";

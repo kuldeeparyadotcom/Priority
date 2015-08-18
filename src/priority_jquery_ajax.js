@@ -1,80 +1,58 @@
-function updatepriority(p,i) {
-    if (p == "") {
-        //document.getElementById("txtHint").innerHTML = "";
-	alert("Empty Priority variable p");
-        return;
-    } else { 
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
-                //document.getElementById(i).contentWindow.location.reload();
-		window.location.reload();
-            }
-        }
-        xmlhttp.open("GET","updatepriority.php?p="+p+"&i="+i,true);
-        xmlhttp.send();
-    }
+//Ajax call to request addtask.php for inserting new task in mysql
+$(document).ready(function(){
+    $("#addtask").click(function(){
+        var task = $("#task").val();
+        $.post("addtask.php",
+        {
+          task: task,
+        },
+        function(data,status){
+	    //Just refresh the addtask div
+            $("#addtaskdiv").load(location.href + " #addtaskdiv");
+          	
+		/* Enable only for troubleshooting  
+		//There is one observation. On few calls of this jQuery, the below alert does not pop up (No idea what's goin)
+		alert("Data: " + data + "\nStatus: " + status);
+		*/
+        });
+    });
+});
+
+
+
+//jquery based implementation of Ajax to update priority
+
+function updatepriority(p,i){
+        $.post("updatepriority.php",
+        {
+          p: p,
+	  i: i,
+        },
+        function(data,status){
+	    //To reload only task list
+            $("#tasklist").load(location.href + " #tasklist");
+
+	/* Enable only for troubleshooting
+            alert("Data: " + data + "\nStatus: " + status);
+	*/
+        });
 }
 
-//updatecompleted
+//jquery based implementation of Ajax to update completion
 
-function updatecompleted(c,i) {
-    if (c == "") {
-        //document.getElementById("txtHint").innerHTML = "";
-        alert("Empty Completion Status");
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
-                //document.getElementById(i).contentWindow.location.reload();
-                window.location.reload();
-            }
-        }
-        xmlhttp.open("GET","updatecompleted.php?c="+c+"&i="+i,true);
-        xmlhttp.send();
-    }
+function updatecompleted(c,i){
+        $.post("updatecompleted.php",
+        {
+          c: c,
+          i: i,
+        },
+        function(data,status){
+            //To reload only task list
+            $("#tasklist").load(location.href + " #tasklist");
+
+	/* Enable only for troubleshooting
+	    alert("Data: " + data + "\nStatus: " + status);
+	*/
+        });
 }
 
-
-/*
-//Add Task Ajax Call
-function addtask(task) {
-    if (task == "") {
-        //document.getElementById("txtHint").innerHTML = "";
-        alert("Empty Task");
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                //document.getElementById("msg").innerHTML = xmlhttp.responseText;
-                //document.getElementById(i).contentWindow.location.reload();
-                window.location.reload();
-            }
-        }
-        xmlhttp.open("GET","addtask.php?task="+task,true);
-        xmlhttp.send();
-    }
-}
-*/
