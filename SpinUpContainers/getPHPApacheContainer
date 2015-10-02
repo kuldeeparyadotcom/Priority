@@ -1,2 +1,2 @@
-SRC=/home/kd/Priority/src
+SRC=$HOME/Priority/src
 sudo docker run --name "Priority_web" --link Priority_mysql:mysql -v $SRC:/var/www/html/  -P -d kuldeeparyadotcom/phpapache:snapshot
