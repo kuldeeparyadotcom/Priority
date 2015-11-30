@@ -1,1 +1,1 @@
-sudo docker build -t kuldeeparyadotcom/phpapache:snapshot .
+docker build -t kuldeeparyadotcom/phpapache:snapshot .
