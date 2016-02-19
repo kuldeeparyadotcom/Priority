@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ $(sudo docker inspect -f '{{ .State.Status }}' Priority_web) == "running" ] && sudo docker stop Priority_web
+
+[ $(sudo docker inspect -f '{{ .State.Status }}' Priority_web) == "exited" ] && sudo docker rm -f Priority_web
+
+[ $(sudo docker inspect -f '{{ .State.Status }}' Priority_mysql) == "running" ] && sudo docker stop Priority_mysql
+
+[ $(sudo docker inspect -f '{{ .State.Status }}' Priority_mysql) == "exited" ] && sudo docker rm -f Priority_mysql
+
+./startPriority
