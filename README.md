@@ -13,7 +13,7 @@ If not, follow Docker installation documentation https://docs.docker.com/engine/
 
 Execute scripts buildDockerImage and startPriority using commands similar to:  
 cd ~/Priority  
-./buildDockerImage  
+sudo ./buildDockerImage  
 ./startPriority  
 
 Script buildDockerImage creates Docker image on your machine.  
@@ -23,7 +23,7 @@ Script startPriority starts docker containers required for this app.
 http://yourserver:49001/  
 
 4. How to stop Priority app.  
-cd ~/Priority
+cd ~/Priority  
 ./stopPriority
 
 Please Note:  
