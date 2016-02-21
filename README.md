@@ -22,6 +22,10 @@ Script startPriority starts docker containers required for this app.
 3. Access Priority on port 49001(Assuming port 49001 is open for incoming traffic on the machine)  
 http://yourserver:49001/  
 
+4. How to stop Priority app.  
+cd ~/Priority
+./stopPriority
+
 Please Note:  
 Just for the sake of demontration MySQL datadir is checked in to GitHub.  
 In real usage scenario, datadir should not be checked in code repository.  
